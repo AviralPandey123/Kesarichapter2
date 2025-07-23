@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 50px;
+      background-color: #eb0b0b;
+ 
+    }
+    .login-box {
+      max-width: 400px;
+      margin: auto;
+      padding: 30px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #aaa;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    #error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <h2>HRP PORTAL PAGE</h2>
+    <form onsubmit="return validateLogin()">
+      <label>Username:</label>
+      <input type="text" id="username" required><br>
+      
+      <label>Password:</label>
+      <input type="password" id="password" required><br>
+      
+      <input type="submit" value="Login">
+      <p id="error"></p>
+    </form>
+  </div>
+
+  <script>
+    // List of valid users
+    const users = {
+      "admin": "admin@123",
+      "shivanshi": "10010",
+      "aviral": "staff",
+       "sangita": "390",
+
+    };
+
+    function validateLogin() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if (users[username] && users[username] === password) {
+        // Redirect to user-specific page
+        window.location.href = username + ".html";
+        return false; // prevent form submission
+      } else {
+        document.getElementById("error").innerText = "Invalid username or password.";
+        return false; // prevent form submission
+      }
+    }
+  </script>
+
+</body>
+</html>
